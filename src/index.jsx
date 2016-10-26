@@ -4,6 +4,8 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 import injectSheet from 'react-jss'
 import _ from 'lodash';
 
+require('!style!css!less!./index.less');
+
 const noSelect = () => {
   return {
       '-webkitTouchCcallout': 'none', 
@@ -51,14 +53,15 @@ class CorespringShowCorrectAnswerToggle extends React.Component {
       }
     }
 
+    
     return (
       <div>{
         (function () {
           if (self.props.show) {
             return (
-              <div className={classes.root} onClick={self.onClick.bind(self)}>
+              <div className={'svg-holder ' + classes.root} onClick={self.onClick.bind(self)}>
                 <ReactCSSTransitionGroup
-                  component="div" className="svg-holder"
+                  component="div" class="svg-holder"
                   transitionName="answer-toggle-icon"
                   transitionEnterTimeout={300}
                   transitionLeaveTimeout={300}>
@@ -137,7 +140,7 @@ const CompWithTheme = (props, context) => {
     },
     hideIconFg: {
       fill: '#1a9cff'
-    }
+    } 
   };
 
   let injected = injectSheet(styles)(CorespringShowCorrectAnswerToggle);
