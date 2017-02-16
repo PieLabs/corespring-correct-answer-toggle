@@ -27,14 +27,15 @@ describe('CorespringCorrectAnswerToggle', () => {
   }
 
   beforeEach(() => {
+
+    let iconStub = stub();
+
+    iconStub['@noCallThru'] = true;
     CorespringCorrectAnswerToggle = proxyquire('../src/index', {
       "./index.less": {
         '@noCallThru': true
       },
-      'corespring-icon/correct-response-icon': {
-        '@noCallThru': true,
-        default: {}
-      }
+      'corespring-icon/correct-response-icon': iconStub
 
     }).default;
 
